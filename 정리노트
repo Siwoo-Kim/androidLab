@@ -1,0 +1,140 @@
+
+SDK?
+    Software Development Kit - 안드로이드 개발을 위한 개발 도구
+SDK 버전?
+    앱에서 지원하는 기기에 호환되는 SDK 버전
+    Minimum SDK version
+    ex) Phone And Tablet: API 15 - 최소 SDK 15버전의 휴대폰과 태블릿 기종을 위한 앱
+
+Activity?
+    화면을 제공하는 안드로이드 구성요소
+
+AVD?
+    Android Virtual Device 혹은 Emulator - 테스트용 가상 기기
+    * 가상 기기의 하드웨어 가속 기능(Intel x86 Emulator Accelerator)을 위한 설정
+        - https://www.jetbrains.com/help/idea/building-and-running-the-application.html
+
+SDK Manager?
+    SDK 라이브러리와 각종 도구를 관리
+
+Android 특징?
+    1.리눅스 기바
+    2.Java or Kotlin을 이용한 앱 개발
+    3.오픈소스
+    4.Fragmentation[단점] - 다양한 업체들의 개발에 의한 기기의 파편화. 에러 혹은 다른 결과를 초래.
+
+Android 아키텍쳐.
+    1 LAYER - Linux Kernel
+    2 LAYER - HAL (Hardware Abstraction Layer)
+        - 하드웨어(카메라, 블루트스) 기능을 위한 자바 표준 인터페이스를 제공.
+    3 LAYER - Android Runtime(ART)
+        - ART 가상 머신은 개발 앱의 실행 환경을 제공
+
+안드로이드 런타임(ART)
+    자바는 런타임 때 JVM이 자바 코드를 수행하지만, 안드로이드은 VM인 ART을 이용해 수행.
+    자바 코드 -> DEX Compiler가 .dex 실행파일 생성 -> ART가 .dex을 실행
+
+컴포넌트?
+    컴포넌트는 앱의 구성 단위이며, 여러 개의 컴포넌트가 조합되어 하나의 앱을 구성.
+    일반 자바 클래스와 달리 컴포넌트는 안드로이드가 생명 주기를 관리.
+
+어플리케이션 라이브러리
+    다른 앱에서 실행 혹은 참조 가능한 컴포넌트의 조합 모음.
+
+    *정리
+        1.안드로이드는 컴포넌트 기반의 개발 방식을 채택한다.
+        2.각 컴포넌트는 독립적이며 개발자 코드 간의 결합이 발생하지 않는다.
+        3.컴포넌트의 생명주기는 시스템이 관리하고 앱 수행 시점은 다양할 수 있다.
+        4.어플리케이션 라이브러리 개념에 의해 한 앱에서 다른 라이브러리를 사용할 수 있다.
+
+컴포넌트의 종류
+    Activity
+        - UI를 구성하기 위한 컴포넌트
+        - 사용자 화면을 제공
+    Service
+        - UI 없이 백그라운드에서 수행되는 컴포넌트
+    ContentProvider
+        - 앱 간 데이터를 공유하기 위한 컴포넌트
+        ex) 카카오톡에서 주소록 앱을 통해 주소를 가져온다
+    BroadcastReceiver
+        - 이벤트 모델로 수행되는 컴포넌트
+        ex) Youtube에서 배터리 부족한 이벤트를 받고 알림을 띄운다.
+
+리소스?
+    정적인 파일을 XML로 외부화
+
+개발 디렉토리 구조.
+    src/main - 개발자와 관련된 모듈의 시작점
+    src/main/AndroidManifest.xml
+        - 앱의 메인 환경 설정 파일.
+    src/main/java/패키지/MainActivity.java
+        - 화면 구성을 위한 Activity로 실제로 이 파일이 수행되어 UI가 출력.
+    res
+        - 앱의 모든 리소스 파일 디렉토리
+    res/drawable
+        - 앱의 이미지 파일
+    res/layout
+        - UI 구성을 위한 레이아웃 XML 파일
+     res/mipmap
+        - 앱의 아이콘 이미지
+     res/values
+        - 문자열 값
+
+R.java
+    안드로이드 툴에 의해 자동으로 생성되며, R을 통해 리소스를 참조한다.
+    ex) R.drawable.ic_message -> res/drawable/ic_message.png
+
+그레이들?
+    안드로이드의 빌드(build) 도구
+
+프로젝트 수준의 build.gradle
+    - 전체 프로젝트를 위한 설정.
+
+모듈 수준의 build.gradle
+    - src 폴더에 위치
+    android.compileSdkVersion
+        - 사용하는 컴파일러 버전
+    android.applicationId
+        - 앱의 식별자
+    android.minSdkVersion
+        - SDK 최소 지원 버전
+    android.targetSdkVersion
+        - 사용하고 있는 SDK 버전
+    android.versionCode
+        - 현재 프로젝트 앱의 버전
+    dependencies
+        - 앱의 의존 라이브러리
+
+AndroidManifest.xml
+    - 앱의 메인 환경 설정 파일.
+    manifest.package
+        - 앱의 식별자
+    application
+        - 앱의 구성 요소를 등록을 위한 태그
+        - 모든 컴포넌트 클래스는 application 하위 태그에 등록
+    application:icon
+        - 앱의 아이콘 이미지
+    application:label
+        - 앱의 이름
+        ex) <application android:icon="@mipmap/ic_launcher" ... />
+            @mipmap/ic_launcher 는 R.mipmap.ic_launcher와 동일
+            @ = R = res 디렉토리
+    activity
+        - 앱의 Activity 컴포넌트 등록
+        ex) <activity android:name=".MainActivity />
+    activity.name
+        - 등록하고자 하는 Java 클래스명을 명시
+
+MainActivity.java
+    - 사용자가 앱을 실행시 호출되는 화면 구성을 위한 Activity
+    - AppCompatActivity을 상속하며 AppCompatActivity는 Activity를 상속.
+    MainActivity.onCreate(Bundle savedInstanceState)
+        - 액티비티가 실행시 호출되는 메서드
+    MainActivity.setContentView()
+        - 화면 출력 함수
+
+
+
+
+
+
