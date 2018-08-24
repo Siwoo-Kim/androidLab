@@ -135,6 +135,121 @@ MainActivity.java
 
 
 
+UI 액티비티-뷰 구조
+액티비티?
+뷰?
+setContentView(View view)
+setContentView(int layoutResID)
+
+두가지 UI 작성법?
+LinearLayout
+레이아웃 XML?
+Launcher Activity?
+<LinearLayout>?
+<Button>?
+
+뷰 태그의 속성?(뷰 태그 == 뷰)
+TextView?
+id 속성?
+R.id
+findViewById
+
+layout_width, layout_height?
+    match_parent
+    fill_content
+    wrap_content
+    100px
+    margin
+    padding
+
+margin, padding - dp
+
+clickable
+TextView, ImageView의 clickable 속성
+
+visibility
+    true, invisible, gone
+    invisible과 gone의 차이
+
+setVisibility()
+
+View.OnClickListener?
+
+뷰의 계층구조
+View?
+ViewGroup?
+TextView?
+
+레이아웃 XML로 계층구조 구현 방법?
+자바 코드로 계층구조 구현 방법?
+
+뷰 클래스
+    TextView?
+        android:text?
+        android:typeface?
+        setTypeFace()?
+        android:textStyle?
+        android:textColor?
+        android:textSize?
+        android:autoLink? *
+        maxLines?
+        ellipsize?
+
+    ImageView?
+        android:src
+        android:maxWidth, android:maxHeight
+        android:adjustViewBounds?
+        android:tint?
+
+    EditText?
+        android:lines?
+        android:maxLines?
+        android:inputType?
+        android:text?
+        android:textMultiLine
+        android:gravity
+
+    Button?
+        Checkbox extends CompoundButton?
+            isChecked()
+            setChecked(boolean)
+            toggle()
+            setOnCheckedChangeListener(OnCheckedChangeListener)
+        RadioButton extends CompoundButton?
+            RadioGroup?
+
+assets 폴더?
+strings.xml?
+res/drawable
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
